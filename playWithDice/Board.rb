@@ -24,7 +24,7 @@ class Board
   def play
     if @currentPosition <16
       puts moveTheCoin(@player.roll_dice)
-      puts "current position is #{@currentPosition}\n"
+      puts "current position is #{@currentPosition}\n\n\n"
     else
       puts("you won......!!")
       @@gameRecord[@player.playerName] = @totalTurns
@@ -37,6 +37,7 @@ class Board
   def determineGameStatus number
     check = (@currentPosition+=number) <=>16
     if check ==0
+      @player.gameStatus = true
       puts "you won........!!"
     else
       if check == -1
@@ -57,12 +58,16 @@ class Board
 
 end
 
+puts "Enter the name of first player"
 
-player1 = Player.new('suresh')
-player2 = Player.new('ramesh')
+player1 = Player.new(@playerName = gets.strip)
+puts "Enter the name of second player"
+
+player2 = Player.new(@playerName = gets.strip)
 board1 = Board.new(player1)
 board2 = Board.new(player2)
 while !(player1.gameStatus && player2.gameStatus) do
+  puts !(player1.gameStatus && player2.gameStatus)
   puts("#{player1.playerName} 's turn\n Please roll the dice")
   board1.play
   puts("#{player2.playerName} 's turn\n Please roll the dice")
