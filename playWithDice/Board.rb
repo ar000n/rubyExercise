@@ -67,7 +67,6 @@ player2 = Player.new(@playerName = gets.strip)
 board1 = Board.new(player1)
 board2 = Board.new(player2)
 while !(player1.gameStatus && player2.gameStatus) do
-  puts !(player1.gameStatus && player2.gameStatus)
   puts("#{player1.playerName} 's turn\n Please roll the dice")
   board1.play
   puts("#{player2.playerName} 's turn\n Please roll the dice")
